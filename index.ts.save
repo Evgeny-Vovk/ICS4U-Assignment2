@@ -1,0 +1,26 @@
+// Input         
+const input1 = "e5vge2n1y";
+const input2 = "6x";
+
+// Proccess
+function blowup(input: string): string {
+    let output = '';
+    for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        if (/[0-9]/.test(char)) {
+            const count = parseInt(char);
+            const nextChar = input[i + 1];
+            if (nextChar !== undefined) {
+                output += nextChar.repeat(count);
+                i++; // skip the next character since we've already processed it
+            }
+        } else {
+            output += char;
+        }
+    }
+    return output;
+}
+
+// Output
+console.log(decodeString(input1)); // Output: "atttxzz"
+console.log(decodeString(input2)); // Output: "2xx"
